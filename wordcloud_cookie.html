@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>みんなの食感View</title>
+        <style>
+            body {
+                margin: 10px;
+            }
+            svg {
+                border: 2px solid orange;
+                width: 600px;
+                height: 600px;
+                background-color: white;
+                float: left;
+                margin: 5px;
+            }
+            .box29 {
+                margin: 5px;
+                width: 614px;
+                float: left;
+            }
+            .box29 .box-title {
+                font-size: 1.2em;
+                background: #f5deb3;
+                padding: 4px;
+                text-align: center;
+                color: #d2691e;
+                font-weight: bold;
+                letter-spacing: 0.05em;
+            }
+        </style>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="d3-cloud\build\d3.layout.cloud.js"></script>
+    </head>
+    <body>
+        <div class="box29">
+            <svg id="recipe1"></svg>
+            <div class="box-title">さくさく☆うの花（おから）クッキー♪</div>
+        </div>
+
+        <div class="box29">
+            <svg id="recipe2"></svg>
+            <div class="box-title">☆クリームチーズのさくさくクッキー☆</div>
+        </div>
+
+        <script src="js\wordcloud_cookie.js"></script>
+    </body>
+</html>
