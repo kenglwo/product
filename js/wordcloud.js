@@ -41,14 +41,6 @@ class Wordcloud {
         .data(words)
         .enter()
         .append("text")
-        .style({
-            "font-family": "Impact",
-            "font-size": function(d) { return d.size + "px"; },
-            "font-weight": "bold",
-            "fill": function(d, i) { 
-                return colorScale(i);
-            }
-        })
         .attr( "text-anchor","middle")
         .attr( "transform", function(d) {
                 return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
@@ -61,8 +53,24 @@ class Wordcloud {
                    .html("count: " + d.count);})
         .on("mouseout", function(d){tooltip.style("visibility", "hidden");})
         .transition()
-        .delay(function(d, i) {return i * 200;})
-        .text(function(d) { return d.text; });
+        .duration(4000)
+        .ease("elastic")
+        .delay(function(d, i) {return i * 500;})
+        .style({
+            "fill": "gray",
+            "font-size": "10px"
+        })
+        .text(function(d) { return d.text; })
+        .style({
+            "font-family": "Impact",
+            "font-size": function(d) { return d.size + "px"; },
+            "font-weight": "bold",
+            "fill": function(d, i) { 
+
+                if(i<8) console.log(d.text); 
+                return colorScale(i);
+            }
+        });
     }
      
     d3.layout.cloud().size([W, H])
@@ -82,16 +90,16 @@ class Wordcloud {
 
 d3.csv("rsc\\recipe1_review.csv", function(review_data){
     d3.csv("rsc\\recipe1_texture.csv", function(texture_data){
-        const review_wordcloud = new Wordcloud(review_data, "svg#recipe1", 10);
-        $("svg#recipe1 text").css("opacity", "0.4");
+        // const review_wordcloud = new Wordcloud(review_data, "svg#recipe1", 10);
+        // $("svg#recipe1 text").css("opacity", "0.4");
         const texture_wordcloud = new Wordcloud(texture_data, "svg#recipe1", 110);
     });
 });
 
 d3.csv("rsc\\recipe2_review.csv", function(review_data){
     d3.csv("rsc\\recipe2_texture.csv", function(texture_data){
-        const review_wordcloud = new Wordcloud(review_data, "svg#recipe2", 10);
-        $("svg#recipe2 text").css("opacity", "0.4");
+        // const review_wordcloud = new Wordcloud(review_data, "svg#recipe2", 10);
+        // $("svg#recipe2 text").css("opacity", "0.4");
         const texture_wordcloud = new Wordcloud(texture_data, "svg#recipe2", 110);
     });
 });
